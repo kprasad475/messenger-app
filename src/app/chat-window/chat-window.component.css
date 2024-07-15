@@ -1,0 +1,20 @@
+.float-left {
+    float: left;
+  }
+  
+  .float-right {
+    float: right;
+  }
+  
+  .message {
+    margin-bottom: 15px;
+  }
+  
+  .message.my-message {
+    background: #efefef;
+  }
+  
+  .message.other-message {
+    background: #e8f1f3;
+  }
+  
