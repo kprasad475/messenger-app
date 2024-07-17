@@ -175,6 +175,7 @@ body {
   }
   
   .chat-message {
+    margin-left: 320px;
     padding: 20px;
   }
   

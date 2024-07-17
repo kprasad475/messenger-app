@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ChangeDetectorRef} from '@angular/core';
 
 @Component({
   selector: 'app-chat-window',
@@ -12,13 +12,17 @@ export class ChatWindowComponent {
 
   onFileSelected(event: any) {
     this.file = event.target.files[0];
+    console.log('File selected:', this.file);
   }
 
-  sendMessage() {
-    if (this.message || this.file) {
-      // Add the message and file to the messages array
+  sendMessage(fileInput: any) {
+    console.log('sendMessage called');
+    console.log('Message:', this.message);
+    console.log('File:', this.file);
+
+    if (this.message.trim() || this.file) {
       this.messages.push({
-        text: this.message,
+        text: this.message.trim(),
         file: this.file,
         type: 'sent'
       });
@@ -26,8 +30,13 @@ export class ChatWindowComponent {
       // Clear the input fields
       this.message = '';
       this.file = null;
+      fileInput.value = '';
+    } else {
+      console.log('Condition not met');
     }
   }
+
+
 
   getFileUrl(file: File): string {
     return URL.createObjectURL(file);

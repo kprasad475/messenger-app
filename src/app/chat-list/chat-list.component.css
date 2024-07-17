@@ -1,0 +1,78 @@
+/* chat-list.component.css */
+
+/* Style for the people list container */
+#plist {
+    height: max-content;
+        overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #ffffff; /* White background */
+    border-right: 1px solid #e0e0e0; /* Separator line */
+    padding: 20px; /* Padding inside the chat list */
+  }
+  
+  /* Style for the search input */
+  #plist .input-group {
+    margin-bottom: 20px; /* Adjust margin */
+  }
+  
+  /* Style for the search icon */
+  #plist .input-group-text {
+    background-color: transparent; /* Transparent background for icon */
+    border: none; /* Remove border */
+  }
+  
+  /* Style for the search input field */
+  #plist .form-control {
+    border: none; /* Remove border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: none; /* Remove shadow */
+  }
+  
+  /* Style for the chat list */
+  #plist .chat-list {
+    list-style-type: none; /* Remove default list styles */
+    padding-left: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Style for each chat item */
+  #plist .chat-list li {
+    cursor: pointer; /* Show pointer cursor on hover */
+    padding: 15px; /* Adjust padding */
+    border-bottom: 1px solid #e0e0e0; /* Light border between items */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+  }
+  
+  /* Active chat item style */
+  #plist .chat-list li.active {
+    background-color: #e0f7fa; /* Background color for active item */
+  }
+  
+  /* Style for avatar image */
+  #plist .chat-list li img {
+    width: 50px; /* Avatar image size */
+    height: 50px;
+    border-radius: 50%; /* Rounded avatar */
+    margin-right: 15px; /* Space between avatar and text */
+  }
+  
+  /* Style for name and status */
+  #plist .chat-list li .about {
+    flex: 1; /* Flexible width for text */
+  }
+  
+  /* Style for name */
+  #plist .chat-list li .about .name {
+    font-weight: bold; /* Bold font for name */
+    margin-bottom: 5px; /* Adjust spacing */
+  }
+  
+  /* Style for status */
+  #plist .chat-list li .about .status {
+    color: #777; /* Lighter color for status */
+  }
+  
+  /* Hover effect for chat items */
+  #plist .chat-list li:hover {
+    background-color: #f0f0f0; /* Light background on hover */
+  }
+  

@@ -1,20 +1,58 @@
-.float-left {
-    float: left;
+/* chat-window.component.css */
+
+/* Style for the chat window container */
+.chat-window {
+  height: 100%; /* Adjust height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #f5f5f5; /* Light background color */
+  padding: 20px; /* Padding inside the chat window */
+}
+
+/* Style for messages */
+.chat-window .message {
+  margin-bottom: 20px; /* Adjust spacing between messages */
+  padding: 15px; /* Padding around messages */
+  border-radius: 10px; /* Rounded message boxes */
+  max-width: 80%; /* Limit width of messages */
+  position: relative; /* Positioning for animations */
+  animation-duration: 0.3s; /* Animation duration */
+  animation-fill-mode: both; /* Animation fill mode */
+}
+
+/* Style for my messages */
+.chat-window .message.my-message {
+  background-color: #5c9eff; /* Blue background for my messages */
+  color: #fff; /* White text color */
+  align-self: flex-end; /* Align to the right */
+}
+
+/* Style for other's messages */
+.chat-window .message.other-message {
+  background-color: #fff; /* White background for others' messages */
+  color: #333; /* Dark text color */
+  align-self: flex-start; /* Align to the left */
+}
+
+/* Animation for message fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  .float-right {
-    float: right;
+  100% {
+    opacity: 1;
   }
-  
-  .message {
-    margin-bottom: 15px;
-  }
-  
-  .message.my-message {
-    background: #efefef;
-  }
-  
-  .message.other-message {
-    background: #e8f1f3;
-  }
-  
+}
+
+/* Apply animation to messages */
+.chat-window .message.animated {
+  animation-name: fadeIn;
+}
+
+/* Chat message timestamp */
+.chat-window .message .timestamp {
+  font-size: 12px; /* Smaller font size for timestamp */
+  color: #999; /* Lighter color for timestamp */
+  position: absolute; /* Positioning for timestamp */
+  bottom: 5px; /* Distance from bottom */
+  right: 10px; /* Distance from right */
+}
