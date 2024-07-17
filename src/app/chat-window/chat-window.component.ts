@@ -6,37 +6,27 @@ import { Component ,ChangeDetectorRef} from '@angular/core';
   styleUrl: './chat-window.component.css'
 })
 export class ChatWindowComponent {
-  message: string = '';
-  file: File | null = null;
-  messages: Array<{ text: string, file: File | null, type: 'sent' | 'received' }> = [];
+  message: string;
+  messages: { text: string, type: string, timestamp: string, file?: File }[] = [];
 
-  onFileSelected(event: any) {
-    this.file = event.target.files[0];
-    console.log('File selected:', this.file);
-  }
+  sendMessage(fileInput: HTMLInputElement) {
+    const files = fileInput.files;
+    const hasFile = files && files.length > 0;
 
-  sendMessage(fileInput: any) {
-    console.log('sendMessage called');
-    console.log('Message:', this.message);
-    console.log('File:', this.file);
-
-    if (this.message.trim() || this.file) {
-      this.messages.push({
-        text: this.message.trim(),
-        file: this.file,
-        type: 'sent'
-      });
-
-      // Clear the input fields
+    if (this.message.trim() || hasFile) {
+      const msg = {
+        text: this.message,
+        type: 'sent', // Change 'sent' to 'received' as necessary
+        timestamp: new Date().toLocaleTimeString() + ', Today',
+        file: hasFile ? files[0] : undefined
+      };
+      this.messages.push(msg);
       this.message = '';
-      this.file = null;
-      fileInput.value = '';
-    } else {
-      console.log('Condition not met');
+      if (fileInput) {
+        fileInput.value = '';
+      }
     }
   }
-
-
 
   getFileUrl(file: File): string {
     return URL.createObjectURL(file);

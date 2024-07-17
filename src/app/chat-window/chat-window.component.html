@@ -1,9 +1,9 @@
 <div class="chat-history">
   <ul class="m-b-0">
-    <li *ngFor="let msg of messages" class="clearfix" [ngClass]="{'float-right': msg.type === 'sent', 'float-left': msg.type === 'received'}">
-      <div class="message-data" [ngClass]="{'text-right': msg.type === 'sent'}">
-        <span class="message-data-time">{{ '10:10 AM, Today' }}</span>
+    <li *ngFor="let msg of messages" [ngClass]="{'float-right': msg.type === 'sent', 'float-left': msg.type === 'received'}">
+      <div class="message-data">
         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+        <span class="message-data-time">{{ msg.timestamp }}</span>
       </div>
       <div class="message" [ngClass]="{'my-message': msg.type === 'sent', 'other-message': msg.type === 'received'}">
         {{ msg.text }}
@@ -15,11 +15,10 @@
   </ul>
 </div>
 <div class="chat-message clearfix">
-  <div class="input-group ">
-    <input #fileInput type="file" (change)="onFileSelected($event)" class="form-control-file ml-2">
-    
-    <input type="text" class="form-control" placeholder="Enter text here..." [(ngModel)]="message">
-
+  <div class="input-group">
+    <input #fileInput type="file" id="fileInput" class="form-control-file ml-2">
+    <label for="fileInput">Choose file</label>
+    <input type="text" class="form-control" placeholder="Enter text here..." (keyup.enter)="sendMessage(fileInput)" [(ngModel)]="message">
     <button class="btn btn-primary ml-2" (click)="sendMessage(fileInput)">Send</button>
   </div>
 </div>
